@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="SnapVid - Download videos from YouTube, Instagram, TikTok, Facebook free!"/>
+  <meta name="keywords" content="video downloader, youtube downloader, tiktok downloader, free"/>
+  <meta name="theme-color" content="#7c3aed"/>
+  <title>SnapVid - Download Any Video Free</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">SnapVid</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#" onclick="showPage('home')">
+        <i class="fas fa-home"></i> Home
+      </a>
+      <a href="#" onclick="showPage('history')">
+        <i class="fas fa-history"></i> History
+      </a>
+      <a href="#" onclick="showPage('settings')">
+        <i class="fas fa-cog"></i> Settings
+      </a>
+      <a href="#pricing">
+        <i class="fas fa-crown"></i> Pricing
+      </a>
+    </div>
+    <div class="nav-right">
+      <button class="btn-login" onclick="openModal('login')">
+        <i class="fas fa-user"></i> Login
+      </button>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HOME PAGE ========== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-badge">🌟 #1 Free Video Downloader</div>
+    <h1 class="hero-title">
+      Download Any Video
+      <span class="gradient-text">Instantly Free</span>
+    </h1>
+    <p class="hero-subtitle">
+      YouTube • Instagram • TikTok • Facebook • Twitter • Vimeo & 1000+ more
+    </p>
+
+    <!-- SEARCH BOX -->
+    <div class="search-wrapper">
+      <div class="search-box">
+        <i class="fas fa-link search-icon"></i>
+        <input
+          type="url"
+          id="videoUrl"
+          class="search-input"
+          placeholder="Paste video URL here... (YouTube, Instagram, TikTok...)"
+          autocomplete="off"
+        />
+        <button class="search-btn" onclick="startDownload()">
+          <i class="fas fa-download"></i>
+          <span>Download</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PLATFORM BADGES -->
+    <div class="platform-badges">
+      <span class="badge"><i class="fab fa-youtube"></i> YouTube</span>
+      <span class="badge"><i class="fab fa-instagram"></i> Instagram</span>
+      <span class="badge"><i class="fab fa-tiktok"></i> TikTok</span>
+      <span class="badge"><i class="fab fa-facebook"></i> Facebook</span>
+      <span class="badge"><i class="fab fa-twitter"></i> Twitter/X</span>
+      <span class="badge"><i class="fab fa-vimeo"></i> Vimeo</span>
+      <span class="badge">📺 Dailymotion</span>
+      <span class="badge">🎬 +1000 More</span>
+    </div>
+  </section>
+
+  <!-- LOADER -->
+  <div class="loader-section" id="loader">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Fetching video info...</p>
+    <div class="loader-bar">
+      <div class="loader-progress" id="loaderProgress"></div>
+    </div>
+  </div>
+
+  <!-- RESULT SECTION -->
+  <div class="result-section" id="resultSection">
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-thumbnail">
+          <img id="videoThumb" src="" alt="Thumbnail"/>
+          <div class="play-overlay">▶</div>
+        </div>
+        <div class="result-info">
+          <h3 id="videoTitle">Video Title</h3>
+          <p id="videoDuration" class="result-meta">
+            <i class="fas fa-clock"></i> Duration: --
+          </p>
+          <p id="videoPlatform" class="result-meta">
+            <i class="fas fa-globe"></i> Platform: --
+          </p>
+        </div>
+      </div>
+      <h4 class="quality-title">
+        <i class="fas fa-download"></i> Choose Download Quality
+      </h4>
+      <div class="quality-grid" id="qualityGrid"></div>
+    </div>
+  </div> 
+    <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-icon">📋</div>
+        <h3>Copy URL</h3>
+        <p>Copy the video link from any platform</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-icon">📥</div>
+        <h3>Paste & Click</h3>
+        <p>Paste it in the box and click Download</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-icon">✅</div>
+        <h3>Download Done</h3>
+        <p>Choose quality and download instantly</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section">
+    <h2 class="section-title">Why Choose SnapVid?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>Ultra-fast servers for instant downloads worldwide</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Works perfectly on phone, tablet and desktop</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>100% Secure</h3>
+        <p>SSL encrypted — your privacy is protected</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎵</div>
+        <h3>MP3 Extract</h3>
+        <p>Convert any video to MP3 audio instantly</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>1000+ Sites</h3>
+        <p>Supports all major video platforms globally</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💎</div>
+        <h3>HD Quality</h3>
+        <p>Download in 4K, 1080p, 720p and more</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <h2 class="section-title">Simple Pricing</h2>
+    <p class="section-sub">Start free. Upgrade when you need more.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-badge free-badge">FREE</div>
+        <h3>Basic</h3>
+        <div class="plan-price">$0 <span>/month</span></div>
+        <ul class="plan-list">
+          <li>✅ 10 downloads/day</li>
+          <li>✅ 720p quality</li>
+          <li>✅ MP3 download</li>
+          <li>✅ Download history</li>
+          <li>❌ No 4K</li>
+          <li>❌ Ads shown</li>
+        </ul>
+        <button class="plan-btn" onclick="openModal('register')">
+          Get Started Free
+        </button>
+      </div>
+      <div class="plan-card featured-plan">
+        <div class="plan-badge pro-badge">⭐ POPULAR</div>
+        <h3>Premium</h3>
+        <div class="plan-price">$4.99 <span>/month</span></div>
+        <ul class="plan-list">
+          <li>✅ Unlimited downloads</li>
+          <li>✅ 4K Ultra HD</li>
+          <li>✅ No ads ever</li>
+          <li>✅ Batch download</li>
+          <li>✅ Priority speed</li>
+          <li>✅ Cloud storage</li>
+        </ul>
+        <button class="plan-btn pro-btn">Go Premium ⭐</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3 class="stat-number">50M+</h3>
+        <p>Videos Downloaded</p>
+      </div>
+      <div class="stat-item">
+        <h3 class="stat-number">1000+</h3>
+        <p>Platforms Supported</p>
+      </div>
+      <div class="stat-item">
+        <h3 class="stat-number">5M+</h3>
+        <p>Happy Users</p>
+      </div>
+      <div class="stat-item">
+        <h3 class="stat-number">99.9%</h3>
+        <p>Uptime</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+<!-- ========== HISTORY PAGE ========== -->
+<div id="page-history" class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <h2><i class="fas fa-history"></i> Download History</h2>
+      <button class="clear-btn" onclick="clearHistory()">
+        <i class="fas fa-trash"></i> Clear All
+      </button>
+    </div>
+    <div id="historyList" class="history-list"></div>
+  </div>
+</div>
+
+<!-- ========== SETTINGS PAGE ========== -->
+<div id="page-settings" class="page">
+  <div class="inner-page">
+    <div class="page-header">
+      <h2><i class="fas fa-cog"></i> Settings</h2>
+    </div>
+    <div class="settings-card">
+      <h3>🎨 Appearance</h3>
+      <div class="setting-row">
+        <div>
+          <strong>Dark Mode</strong>
+          <p>Switch between light and dark theme</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkModeToggle" checked onchange="toggleDarkMode()"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3>⬇️ Download Preferences</h3>
+      <div class="setting-row">
+        <div>
+          <strong>Default Quality</strong>
+          <p>Set your preferred download quality</p>
+        </div>
+        <select class="settings-select" id="qualitySelect">
+          <option>Best Available</option>
+          <option>1080p HD</option>
+          <option>720p</option>
+          <option>480p</option>
+          <option>360p</option>
+        </select>
+      </div>
+      <div class="setting-row">
+        <div>
+          <strong>Save History</strong>
+          <p>Keep track of your downloads</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="historyToggle" checked/>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3>🔔 Notifications</h3>
+      <div class="setting-row">
+        <div>
+          <strong>Download Complete Alert</strong>
+          <p>Get notified when download finishes</p>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notifToggle" checked/>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="settings-card">
+      <h3>👤 Account</h3>
+      <button class="btn-login" onclick="openModal('login')"
+        style="width:100%;padding:14px;font-size:16px;justify-content:center;">
+        <i class="fas fa-user"></i> Manage Account
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== LOGIN MODAL ========== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="modal" id="authModal">
+  <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="modal-logo">⚡ SnapVid</div>
+  <div class="modal-tabs">
+    <button class="modal-tab active" id="tab-login" onclick="switchModalTab('login')">Login</button>
+    <button class="modal-tab" id="tab-register" onclick="switchModalTab('register')">Register</button>
+  </div>
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm" class="auth-form" onsubmit="handleAuth(event,'login')">
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" placeholder="Email Address" required/>
+    </div>
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="Password" required/>
+    </div>
+    <button type="submit" class="auth-btn">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </button>
+    <div class="divider"><span>or</span></div>
+    <button type="button" class="google-btn" onclick="googleLogin()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20"/>
+      Continue with Google
+    </button>
+    <p class="auth-link">Forgot password? <a href="#">Reset here</a></p>
+  </form>
+
+  <!-- REGISTER FORM -->
+  <form id="registerForm" class="auth-form" style="display:none" onsubmit="handleAuth(event,'register')">
+    <div class="input-group">
+      <i class="fas fa-user"></i>
+      <input type="text" placeholder="Full Name" required/>
+    </div>
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" placeholder="Email Address" required/>
+    </div>
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="Password" required/>
+    </div>
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="Confirm Password" required/>
+    </div>
+    <button type="submit" class="auth-btn">
+      <i class="fas fa-user-plus"></i> Create Account
+    </button>
+    <div class="divider"><span>or</span></div>
+    <button type="button" class="google-btn" onclick="googleLogin()">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20"/>
+      Continue with Google
+    </button>
+  </form>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="logo">⚡ SnapVid</div>
+      <p>Download any video, anywhere, anytime — completely free.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#" onclick="showPage('history')">History</a>
+      <a href="#" onclick="showPage('settings')">Settings</a>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">DMCA</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 SnapVid. All rights reserved. Made with ❤️ for free users worldwide.</p>
+  </div>
+</footer>
+
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
